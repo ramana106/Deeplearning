@@ -1,6 +1,7 @@
 import argparse
 import chainer
 import chainer.links as L
+import sys
 from chainer import training
 from model.model2 import MLP
 from chainer.training import extensions
@@ -16,9 +17,10 @@ def main():
                         help='Frequency of taking a snapshot')
     parser.add_argument('--gpu', '-g', type=int, default=0,
                         help='GPU ID (negative value indicates CPU)')
-    parser.add_argument('--out', '-o', default='result',
-                        help='Directory to output the result')
+    parser.add_argument('--out', '-o', help='Directory to output the result')
     args = parser.parse_args()
+    if not args.out:
+        sys.exit('Enter the result directory')
 
     print('GPU: {}'.format(args.gpu))
     print('# Minibatch-size: {}'.format(args.batchsize))
