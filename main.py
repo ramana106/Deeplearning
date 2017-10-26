@@ -10,7 +10,7 @@ from chainer.training import extensions
 def main():
     parser = argparse.ArgumentParser(description='Chainer example: MNIST')
     parser.add_argument('--batchsize', '-b', type=int, default=64,
-                        help='Number of images in each mini-batch')
+                        help='Number of images in each batch')
     parser.add_argument('--epoch', '-e', type=int, default=20,
                         help='Number of sweeps over the dataset to train')
     parser.add_argument('--frequency', '-f', type=int, default=-1,
@@ -18,9 +18,12 @@ def main():
     parser.add_argument('--gpu', '-g', type=int, default=0,
                         help='GPU ID (negative value indicates CPU)')
     parser.add_argument('--out', '-o', help='Directory to output the result')
+    parser.add_argument('--data', '-d', help='Directory to output the result')
     args = parser.parse_args()
     if not args.out:
-        sys.exit('Enter the result directory')
+        sys.exit('Pass the directory to save results')
+    if not args.data:
+        sys.exit('pass the input dataset as text file')
 
     print('GPU: {}'.format(args.gpu))
     print('# Minibatch-size: {}'.format(args.batchsize))
@@ -42,7 +45,7 @@ def main():
 
     # Load the MNIST dataset
     # train, test = chainer.datasets.get_mnist()
-    DATA = chainer.datasets.LabeledImageDataset('/home/ramanathan/Desktop/img/data.txt', '')
+    DATA = chainer.datasets.LabeledImageDataset(args.data, '')
     test_size = int(len(DATA) * 0.05)
     test, train = chainer.datasets.split_dataset_random(DATA, test_size)
 
