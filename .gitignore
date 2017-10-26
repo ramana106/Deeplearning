@@ -1,0 +1,12 @@
+*.pyc
+.idea/
+networks/
+localizer/
+config/general/temp.jpg
+debug.log
+temp.jpg
+userImages/
+.gitignore~
+~*
+src/getcaffe.py
+*.py~
