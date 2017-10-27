@@ -21,5 +21,5 @@ An introduction on deeplearning(Chainer)
   * Number of epoch
   * batch size
 * Run `python main.py -h` to learn about configurable params
-* Start training `python main.py -o <path to save net files> -d <dataset txt file>`
+* Start training `python main.py -o <output directory> -d <dataset txt file>`
   
