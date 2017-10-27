@@ -40,7 +40,7 @@ def main():
         model.to_gpu()  # Copy the model to the GPU
 
     # Setup an optimizer
-    optimizer = chainer.optimizers.SGD()
+    optimizer = chainer.optimizers.Adam()
     optimizer.setup(model)
 
     # Load the MNIST dataset
