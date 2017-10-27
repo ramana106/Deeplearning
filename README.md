@@ -23,3 +23,5 @@ An introduction on deeplearning(Chainer)
 * Run `python main.py -h` to learn about configurable params
 * Start training `python main.py -o <output directory> -d <dataset txt file>`
   
+Alexnet model
+http://dl.caffe.berkeleyvision.org/bvlc_reference_caffenet.caffemodel
