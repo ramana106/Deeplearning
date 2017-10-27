@@ -40,7 +40,7 @@ def main():
         model.to_gpu()  # Copy the model to the GPU
 
     # Setup an optimizer
-    optimizer = chainer.optimizers.Adam()
+    optimizer = chainer.optimizers.SGD()
     optimizer.setup(model)
 
     # Load the MNIST dataset
@@ -54,10 +54,12 @@ def main():
                                                  repeat=False, shuffle=False)
 
     # Set up a trainer
+    # Generates mini batches
     updater = training.StandardUpdater(train_iter, optimizer, device=args.gpu)
     trainer = training.Trainer(updater, (args.epoch, 'epoch'), out=args.out)
 
     # Evaluate the model with the test dataset for each epoch
+    # Every epoch test accuracy on validation set
     trainer.extend(extensions.Evaluator(test_iter, model, device=args.gpu))
 
     # Dump a computational graph from 'loss' variable at the first iteration
