@@ -6,7 +6,7 @@ An introduction on deeplearning(Chainer)
 `pip install --user chainer==2.0.0`
  
 2. Install cupy:
-`pip install --user cupy`
+`pip install --user cupy==1.0.0.1`
 
 ## Prep data
 * [Download the dataset from here](https://drive.google.com/file/d/0By0A8jnpSd8lQWcxcDY0cWViN1E/view?usp=sharing)
